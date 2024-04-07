@@ -1,0 +1,306 @@
+openapi: 3.0.0
+info:
+  title: Hyperhire
+  version: 1.0.0
+servers:
+  - url: http://{{base}}
+paths:
+  /api/login:
+    post:
+      tags:
+        - General
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: fauzi
+                password: '123456'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjQ2MDc4OCwiZXhwIjoxNzEyNDY0Mzg4fQ.O-trDbd6Yp0Ei0cz3AAH5ilo4KIfaOB2licCRmHFORY
+  /api/register:
+    post:
+      tags:
+        - General
+      summary: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: naufa
+                fullname: naufa
+                email: naufa@gmail.com
+                password: '123456'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJuYXVmYSIsImZ1bGxuYW1lIjoibmF1ZmEiLCJlbWFpbCI6Im5hdWZhQGdtYWlsLmNvbSIsImlhdCI6MTcxMjQ2MDgxMCwiZXhwIjoxNzEyNDY0NDEwfQ.s9KLZ3WyFk1_xKrEj67EN2vbdbDj6g8SOeIm0EhdMtk
+  /api/profile:
+    get:
+      tags:
+        - General
+      summary: Profile
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjQ2MDc4OCwiZXhwIjoxNzEyNDY0Mzg4fQ.O-trDbd6Yp0Ei0cz3AAH5ilo4KIfaOB2licCRmHFORY
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 2
+                username: fauzi
+                fullname: fauzi
+                email: fauzi@gmail.com
+                password: $2b$10$PuzJlQTJ4j7gx23s/4BWG.tlZ3Q6/eheB9fEUPLyk4L0mrVO7kfme
+                point: 20
+                createdAt: '2024-04-05T14:01:47.230Z'
+                updatedAt: '2024-04-07T01:59:31.853Z'
+  /api/books:
+    get:
+      tags:
+        - General
+      summary: List Book
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjMzMzc0MywiZXhwIjoxNzEyMzM3MzQzfQ.dbZklD41OUhO7gFfxDEJc5QGxNCWhTO9bRlhcC0jeZI
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 2
+                username: fauzi
+                fullname: fauzi
+                email: fauzi@gmail.com
+                password: $2b$10$PuzJlQTJ4j7gx23s/4BWG.tlZ3Q6/eheB9fEUPLyk4L0mrVO7kfme
+                point: 20
+                createdAt: '2024-04-05T14:01:47.230Z'
+                updatedAt: '2024-04-07T01:59:31.853Z'
+  /api/books/{bookId}:
+    get:
+      tags:
+        - General
+      summary: Get Book
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjMzMzc0MywiZXhwIjoxNzEyMzM3MzQzfQ.dbZklD41OUhO7gFfxDEJc5QGxNCWhTO9bRlhcC0jeZI
+        - name: bookId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 1
+                title: Slow Horses
+                writer: Mick Herron
+                coverImage: >-
+                  https://images-na.ssl-images-amazon.com/images/I/51Ga5GuElyL._AC_SX184_.jpg
+                price: 10
+                tag: slow, horses, mick herron
+                createdAt: '2024-04-05T14:38:48.589Z'
+                updatedAt: '2024-04-05T14:38:48.589Z'
+  /api/mybook:
+    get:
+      tags:
+        - General
+      summary: Get My Book
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjQ2MDc4OCwiZXhwIjoxNzEyNDY0Mzg4fQ.O-trDbd6Yp0Ei0cz3AAH5ilo4KIfaOB2licCRmHFORY
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                count: 1
+                rows:
+                  - id: 1
+                    title: Slow Horses
+                    writer: Mick Herron
+                    coverImage: >-
+                      https://images-na.ssl-images-amazon.com/images/I/51Ga5GuElyL._AC_SX184_.jpg
+                    price: 10
+                    tag: slow, horses, mick herron
+                    createdAt: '2024-04-05T14:38:48.589Z'
+                    updatedAt: '2024-04-05T14:38:48.589Z'
+                    order:
+                      id: 11
+                      userId: 2
+                      bookId: 1
+                      isCanceled: false
+                      createdAt: '2024-04-07T01:59:31.918Z'
+                      updatedAt: '2024-04-07T01:59:31.918Z'
+  /api/orders:
+    post:
+      tags:
+        - General
+      summary: Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                bookId: 1
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjQ2MDc4OCwiZXhwIjoxNzEyNDY0Mzg4fQ.O-trDbd6Yp0Ei0cz3AAH5ilo4KIfaOB2licCRmHFORY
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 13
+                bookId: 1
+                userId: 2
+                isCanceled: false
+                updatedAt: '2024-04-07T03:36:48.679Z'
+                createdAt: '2024-04-07T03:36:48.679Z'
+  /api/orders/{orderId}/cancel:
+    put:
+      tags:
+        - General
+      summary: Cancel Order
+      requestBody:
+        content: {}
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJmYXV6aSIsImZ1bGxuYW1lIjoiZmF1emkiLCJlbWFpbCI6ImZhdXppQGdtYWlsLmNvbSIsImlhdCI6MTcxMjQ2MDc4OCwiZXhwIjoxNzEyNDY0Mzg4fQ.O-trDbd6Yp0Ei0cz3AAH5ilo4KIfaOB2licCRmHFORY
+        - name: orderId
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '11'
+      responses:
+        undefined:
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Order canceled
