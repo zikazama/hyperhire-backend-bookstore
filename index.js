@@ -25,7 +25,7 @@ app.use(cors());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use("/", RootController);
+app.get("/", (req, res) => res.send("Express on Vercel"));
 app.use("/api", UserController);
 app.use("/api", BookController);
 app.use("/api", OrderController);
